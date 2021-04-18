@@ -63,12 +63,7 @@ app.post('/orderCollection', (req, res) => {
       })
   
 });
-app.get('/serviceData', (req, res) => {
-    serviceCollection.find({})
-        .toArray((err, documents) => {
-            res.send(documents);
-        })
-})
+
 app.post('/serviceByDate', (req, res) => {
     const date = req.body;
     const email = req.body.email;
@@ -130,6 +125,12 @@ app.get('/review', (req, res) => {
         res.send(items)
     })
 })
+app.get('/serviceData', (req, res) => {
+    serviceCollection.find({})
+        .toArray((err, documents) => {
+            res.send(documents);
+        })
+})
 app.get('/order', (req, res) => {
     const queryEmail = req.query.email;
     serviceCollection.find({email: queryEmail})
@@ -145,6 +146,7 @@ app.get('/newService', (req, res) => {
         res.send(items)
     })
 })
+
 
 app.post('/isAdmin', (req, res) => {
   const email = req.body.email;
